@@ -1,0 +1,78 @@
+TFDV Serving Data Validation Report
+==================================================
+Serving columns: ['plan_cpu', 'plan_mem', 'plan_gpu', 'gpu_type', 'inst_num', 'status']
+Training columns: ['machine_cpu_usr', 'machine_cpu_kernel', 'machine_cpu_iowait', 'machine_cpu', 'machine_gpu', 'gpu_util_per_gpu', 'machine_load_1', 'machine_net_receive', 'machine_num_worker', 'gpu_type', 'cap_cpu', 'cap_mem', 'cap_gpu', 'duration_sec']
+Missing in serving: {'machine_cpu', 'machine_gpu', 'cap_mem', 'gpu_util_per_gpu', 'machine_cpu_iowait', 'duration_sec', 'machine_net_receive', 'cap_gpu', 'machine_cpu_usr', 'machine_cpu_kernel', 'machine_num_worker', 'machine_load_1', 'cap_cpu'}
+
+Feature: machine_cpu
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: plan_mem
+  Type: New column
+  Detail: New column (column in data but not in schema)
+
+Feature: machine_cpu_iowait
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: cap_gpu
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: status
+  Type: New column
+  Detail: New column (column in data but not in schema)
+
+Feature: plan_gpu
+  Type: New column
+  Detail: New column (column in data but not in schema)
+
+Feature: machine_gpu
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: machine_num_worker
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: machine_cpu_usr
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: cap_cpu
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: cap_mem
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: plan_cpu
+  Type: New column
+  Detail: New column (column in data but not in schema)
+
+Feature: machine_load_1
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: machine_net_receive
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: inst_num
+  Type: New column
+  Detail: New column (column in data but not in schema)
+
+Feature: duration_sec
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: machine_cpu_kernel
+  Type: Column dropped
+  Detail: Column is completely missing
+
+Feature: gpu_util_per_gpu
+  Type: Column dropped
+  Detail: Column is completely missing
+

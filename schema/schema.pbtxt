@@ -1,0 +1,217 @@
+feature {
+  name: "machine_cpu_usr"
+  type: FLOAT
+  float_domain {
+    min: 0.0
+    max: 100.0
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "machine_cpu_kernel"
+  type: FLOAT
+  float_domain {
+    min: 0.0
+    max: 100.0
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "machine_cpu_iowait"
+  type: FLOAT
+  float_domain {
+    min: 0.0
+    max: 100.0
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "machine_cpu"
+  type: FLOAT
+  float_domain {
+    min: 0.0
+    max: 100.0
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "machine_gpu"
+  type: FLOAT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "gpu_util_per_gpu"
+  type: FLOAT
+  float_domain {
+    min: 0.0
+    max: 100.0
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "machine_load_1"
+  type: FLOAT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "machine_net_receive"
+  value_count {
+    min: 1
+    max: 1
+  }
+  type: FLOAT
+  presence {
+    min_count: 1
+  }
+}
+feature {
+  name: "machine_num_worker"
+  value_count {
+    min: 1
+    max: 1
+  }
+  type: FLOAT
+  presence {
+    min_count: 1
+  }
+}
+feature {
+  name: "gpu_type"
+  type: BYTES
+  string_domain {
+    value: "T4"
+    value: "P100"
+    value: "V100"
+    value: "V100M32"
+    value: "MISC"
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "cap_cpu"
+  type: INT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "cap_mem"
+  type: INT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "cap_gpu"
+  type: INT
+  int_domain {
+    min: 1
+    max: 8
+  }
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+feature {
+  name: "duration_sec"
+  type: INT
+  presence {
+    min_fraction: 1.0
+    min_count: 1
+  }
+  shape {
+    dim {
+      size: 1
+    }
+  }
+}
+string_domain {
+  name: "gpu_type"
+  value: "MISC"
+  value: "P100"
+  value: "T4"
+  value: "V100"
+  value: "V100M32"
+}

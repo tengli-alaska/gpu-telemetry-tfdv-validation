@@ -1,0 +1,8 @@
+TFDV Drift Detection Report
+==================================================
+Comparison: Training (first half) vs Eval (second half)
+
+Feature: gpu_util_per_gpu
+  Type: Out-of-range values
+  Detail: Unexpectedly high value: 207.608>100(upto six significant digits)
+

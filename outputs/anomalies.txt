@@ -1,0 +1,24 @@
+TFDV Anomaly Detection Report
+==================================================
+Dataset: Eval data with 5 injected anomalies
+
+Feature: machine_cpu_usr
+  Type: Out-of-range values
+  Detail: Unexpectedly high value: 105>100(upto six significant digits)
+
+Feature: gpu_util_per_gpu
+  Type: Multiple errors
+  Detail: The feature has a shape, but it's not always present (if the feature is nested, then it should always be present at each nested level) or its value lengths vary. The feature was present in fewer examples than expected: minimum fraction = 1.000000, actual = 0.999336 Unexpectedly low values: -25<0(upto six significant digits) Unexpectedly high value: 207.608>100(upto six significant digits)
+
+Feature: gpu_type
+  Type: Unexpected string values
+  Detail: Examples contain values missing from the schema: A100 (<1%). 
+
+Feature: machine_cpu
+  Type: Multiple errors
+  Detail: The feature has a shape, but it's not always present (if the feature is nested, then it should always be present at each nested level) or its value lengths vary. The feature was present in fewer examples than expected: minimum fraction = 1.000000, actual = 0.999336 Unexpectedly high value: 113>100(upto six significant digits)
+
+Feature: machine_load_1
+  Type: Multiple errors
+  Detail: The feature has a shape, but it's not always present (if the feature is nested, then it should always be present at each nested level) or its value lengths vary. The feature was present in fewer examples than expected: minimum fraction = 1.000000, actual = 0.999336
+
