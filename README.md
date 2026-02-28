@@ -2,9 +2,9 @@
 
 Data validation and high-dimensional visualization pipeline for production GPU cluster telemetry, using **TensorFlow Data Validation (TFDV)** and **TensorFlow Embedding Projector**.
 
-**Dataset**: [Alibaba PAI GPU Cluster Trace v2020](https://github.com/alibaba/clusterdata/tree/master/cluster-trace-gpu-v2020) — 6,500+ GPUs across 1,800 machines, published in NSDI'22.
+**Dataset**: [Alibaba PAI GPU Cluster Trace v2020](https://github.com/alibaba/clusterdata/tree/master/cluster-trace-gpu-v2020) : 6,500+ GPUs across 1,800 machines, published in NSDI'22.
 
-**Lab Reference**: Adapted from [TFDV Lab 3 (C2W1_Assignment)](https://github.com/raminmohammadi/MLOps/blob/main/Labs/Tensorflow_Labs/TFDV_Labs/TFDV_Lab3/C2W1_Assignment.ipynb) — DADS 7305 MLOps, Northeastern University (Prof. Ramin Mohammadi)
+**Lab Reference**: Adapted from [TFDV Lab 3 (C2W1_Assignment)](https://github.com/raminmohammadi/MLOps/blob/main/Labs/Tensorflow_Labs/TFDV_Labs/TFDV_Lab3/C2W1_Assignment.ipynb) : DADS 7305 MLOps, Northeastern University (Prof. Ramin Mohammadi)
 
 ---
 
@@ -88,7 +88,7 @@ The raw Alibaba trace contains 7 CSV tables totaling 16M rows. `preprocess.py` p
 
 ---
 
-## Reproducing This Project
+## Steps for Reproducing This Project
 
 ### Prerequisites
 - **Python 3.10** (TFDV requires ≤3.10)
