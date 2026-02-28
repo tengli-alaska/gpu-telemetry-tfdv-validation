@@ -16,6 +16,21 @@ This project demonstrates automated data validation as the first line of defense
 
 ---
 
+## Why Data Validation Matters for GPU Clusters
+
+GPU clusters rely on telemetry data to make scheduling, capacity planning, and anomaly detection decisions. Bad data in this context has real operational consequences:
+
+- **Faulty utilization readings** (like the real `gpu_util_per_gpu = 207%` anomaly we found in this trace) make a scheduler think a machine is overloaded when it might be idle — wasting expensive GPU capacity by routing jobs away from available hardware.
+- **Unknown GPU types** appearing without schema updates (e.g., A100s added to a cluster trained on T4/P100/V100 patterns) cause models to make wrong predictions because the performance characteristics are completely different.
+- **Workload mix drift** (P100 dropping from 27% → 23% of the fleet) means capacity planning models trained on July's distribution will over-provision P100s and under-provision T4s in August, wasting money or causing job queuing delays.
+- **Missing telemetry** (NaN in gpu_util, cpu_util) creates blind spots in health monitoring — a machine could be overheating or failing with no alert.
+
+With 6,500+ GPUs in this cluster, bad scheduling decisions from bad data cost real money every minute. TFDV acts as the automated gatekeeper that catches these issues before they reach downstream models and scheduling systems — garbage in, garbage out.
+
+This project demonstrates that automated data validation pipeline using the real Alibaba production trace, combined with geometric visualization to build intuition about the data's structure.
+
+---
+
 ## TFDV Workflow
 
 | Step | What | TFDV API |
@@ -82,10 +97,9 @@ The raw Alibaba trace contains 7 CSV tables totaling 16M rows. `preprocess.py` p
 - Correctly simulates the training → serving schema gap in production
 
 ### Embedding Projector
-- GPU types form distinct clusters in t-SNE space
-- Anomalous readings (>100% utilization) appear as geometric outliers
-- Temporal drift visible when coloring by time period
-
+- GPU types form distinct clusters in t-SNE space : machines with the same GPU type have similar utilization fingerprints. MISC machines (8 GPUs) cluster separately from T4 machines (2 GPUs), confirming that the features we engineered capture real hardware differences.
+- Anomalous readings (>100% utilization) appear as geometric outliers at the edges of the point cloud : the same points TFDV flagged statistically are visually isolated in 8-dimensional space. Statistical validation and geometric intuition agree.
+- July and August points are heavily interleaved rather than separated : this is a significant finding: the overall workload profiles are largely stable across months, even though TFDV detected subtle distributional drift. Real-world drift is gradual and statistical, not visible to the naked eye, which is exactly why automated tools like TFDV are necessary.
 ---
 
 ## Steps for Reproducing This Project
