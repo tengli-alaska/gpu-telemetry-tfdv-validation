@@ -10,7 +10,7 @@ Data validation and high-dimensional visualization pipeline for production GPU c
 
 ## Motivation
 
-Production ML systems generate massive streams of GPU telemetry — utilization, power draw, memory usage, job durations. Bad data (sensor glitches, missing readings, out-of-range values) silently degrades model performance and scheduling decisions. As clusters evolve with new hardware and shifting workloads, data drift can invalidate assumptions in existing pipelines.
+Production ML systems generate massive streams of GPU telemetry; utilization, power draw, memory usage, job durations. Bad data (sensor glitches, missing readings, out-of-range values) silently degrades model performance and scheduling decisions. As clusters evolve with new hardware and shifting workloads, data drift can invalidate assumptions in existing pipelines.
 
 This project demonstrates automated data validation as the first line of defense in a production ML pipeline, combined with geometric visualization to build intuition about the data's structure.
 
@@ -27,9 +27,9 @@ This project demonstrates automated data validation as the first line of defense
 | 5 | Customize schema with hardware-specific constraints: `gpu_util ∈ [0,100]`, `gpu_type` domain, required fields | `tfdv.get_feature()`, `float_domain`, `StringDomain` |
 | 6 | Generate eval statistics and overlay with training | `tfdv.visualize_statistics(eval, train)` |
 | 7 | Inject synthetic anomalies into eval data (negative util, OOR values, missing fields, unknown GPU type) | `pd.concat()` |
-| 8 | Validate eval data against schema — detect all injected + real anomalies | `tfdv.validate_statistics()` |
+| 8 | Validate eval data against schema; detect all injected + real anomalies | `tfdv.validate_statistics()` |
 | 9 | Configure drift comparators and detect temporal drift between trace halves | `drift_comparator.infinity_norm`, `jensen_shannon_divergence` |
-| 10 | Validate serving data (resource requests only) — detect schema mismatch | `tfdv.validate_statistics()` |
+| 10 | Validate serving data (resource requests only); detect schema mismatch | `tfdv.validate_statistics()` |
 | 11 | Export embeddings and visualize in TensorFlow Embedding Projector | `projector.tensorflow.org` |
 
 ---
@@ -42,15 +42,15 @@ Alibaba PAI Trace (7 CSV tables, 16M rows)
     ▼
 preprocess.py — join tables, engineer features, temporal split, sample
     │
-    ├── training_data.csv   (3,000 rows — July baseline)
-    ├── eval_data.csv       (1,500 rows — August drift candidate)
-    └── serving_data.csv    (500 rows — task resource requests only)
+    ├── training_data.csv   (3,000 rows : July baseline)
+    ├── eval_data.csv       (1,500 rows : August drift candidate)
+    └── serving_data.csv    (500 rows : task resource requests only)
     │
     ▼
 TFDV Notebook — stats, schema, anomaly detection, drift detection
     │
     ▼
-Embedding Projector — t-SNE/PCA visualization of telemetry space
+Embedding Projector : t-SNE/PCA visualization of telemetry space
 ```
 
 ### Preprocessing Details
